@@ -1,15 +1,18 @@
+import { Routes, Route } from "react-router-dom";
 import { Wrapper } from "./App.styled";
-import { Header } from './Header/Header'
+import { AppBar } from '../AppBar/AppBar'
+import { Home } from '../../pages/Home'
+import { Movies } from '../../pages/Movies'
 
 export const App = () => {
   return (
     <Wrapper>
-      <Header>
-        <nav>
-          <a href="/components">Home</a>
-          <a href="/components">Movie</a>
-        </nav>
-      </Header>
+      <Routes>
+        <Route path="/" element={<AppBar />}>
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+        </Route>
+      </Routes> 
     </Wrapper>
   );
 };
