@@ -1,5 +1,5 @@
-import { Routes, Route, Link } from "react-router-dom";
-import { Wrapper, AppBar } from "./App.styled";
+import { Routes, Route } from "react-router-dom";
+import { Wrapper, AppBar, NavItem } from "./App.styled";
 import { Home } from '../../pages/Home'
 import { Movies } from '../../pages/Movies'
 import { MovieDetails } from "../../pages/MovieDetails";
@@ -9,8 +9,8 @@ export const App = () => {
     <Wrapper>
       <AppBar>
         <nav>
-          <Link to="/" end='true'>Home</Link>
-          <Link to="/movies">Movies</Link>
+          <NavItem to="/" end='true'>Home</NavItem>
+          <NavItem to="/movies">Movies</NavItem>
         </nav>
       </AppBar>
       <Routes>
