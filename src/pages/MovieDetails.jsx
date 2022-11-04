@@ -23,14 +23,15 @@ useEffect(() => {
     <>
       {movieInfo &&
         (<main>
+          <div>
         <img src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`} alt={`${movieInfo.title ? movieInfo.title : movieInfo.name}`}/>
         <div>
         <h2>{movieInfo.title ? movieInfo.title : movieInfo.name} <span>({movieInfo.release_date.slice(0, 4)})</span></h2>
         <p>User score: {Number(movieInfo.vote_average).toFixed(1)}</p>
         <p>Overview</p>
         <p>{movieInfo.overview}</p>
-        {movieInfo.genres.map(({name}) => <p key={name}>{name}</p>)}
-        {/* <p key={name}>{name}</p> */}
+        <p>{movieInfo.genres.map(({name}) => name).join(', ')}</p>
+        </div>
         </div>
         </main>)}
       </>
