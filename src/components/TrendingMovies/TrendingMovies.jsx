@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
+import { MovieListLink, MovieListItem, MdDoneAllIcon } from "./TrendingMovies.styled"
 
 export const TrendingMovies = ({getMovies}) => {
     return (
         <ul>
-        {getMovies.map(({id, title, name}) => (<li key={id}><Link to={`movies/${id}`}>{title ? title : name}</Link></li>))}
+        {getMovies.map(({id, title, name}) => (<MovieListItem key={id}><MovieListLink to={`movies/${id}`}><MdDoneAllIcon />{title ? title : name}</MovieListLink></MovieListItem>))}
         </ul>
     )
 }

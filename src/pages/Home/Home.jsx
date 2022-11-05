@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
+
 // import axios from "axios"
-import { makeTrendingMoviesApiRequest } from "../services/api"
-import { TrendingMovies} from '../components/TrendingMovies/TrendingMovies'
+import { makeTrendingMoviesApiRequest } from "../../services/api"
+import { TrendingMovies} from '../../components/TrendingMovies/TrendingMovies'
+import { Title } from "./Home.styled"
 
 // axios.defaults.baseURL = 'https://api.themoviedb.org/'
 
@@ -30,8 +32,11 @@ useEffect(() => {
   
      return (
         <main>
-        <h1>Trending today</h1>
+          <section>
+        <Title>Trending today</Title>
         <TrendingMovies getMovies={movies}/>
+          </section>
         </main>
     )
 }
+
