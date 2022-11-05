@@ -1,13 +1,23 @@
 import axios from "axios"
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/'
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
 
 export const makeTrendingMoviesApiRequest = async () => {
-    const response = await axios.get(`3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
+    const response = await axios.get(`trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
     return await response.data.results
 }
 
 export const makeMovieApiReguest = async (id) => {
-    const response = await axios.get(`3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    const response = await axios.get(`movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    return await response.data
+}
+
+export const makeCastApiReguest = async (id) => {
+    const response = await axios.get(`movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    return await response.data.cast
+}
+
+export const makeReviewApiReguest = async (id) => {
+    const response = await axios.get(`movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     return await response.data
 }

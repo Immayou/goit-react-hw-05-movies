@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams, Outlet } from "react-router-dom"
 import { makeMovieApiReguest } from "../services/api"
 
 export const MovieDetails = () => {
@@ -19,21 +19,32 @@ useEffect(() => {
   onRequestHandler()
   }, [movieId])
 
-    return (
+  return (
     <>
+    <main>
+      <button type='button'><Link to='/'>Go back</Link></button>
       {movieInfo &&
-        (<main>
-          <div>
+        (
+        <div>
         <img src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`} alt={`${movieInfo.title ? movieInfo.title : movieInfo.name}`}/>
         <div>
         <h2>{movieInfo.title ? movieInfo.title : movieInfo.name} <span>({movieInfo.release_date.slice(0, 4)})</span></h2>
-        <p>User score: {Number(movieInfo.vote_average).toFixed(1)}</p>
+        <p>User score: {(Number(movieInfo.vote_average)*10).toFixed(1)} %</p>
         <p>Overview</p>
         <p>{movieInfo.overview}</p>
-        <p>{movieInfo.genres.map(({name}) => name).join(', ')}</p>
+        <p>Genres: {movieInfo.genres.map(({name}) => name).join(', ')}</p>
         </div>
+        <div>
+          <p>Aditional information</p> 
+          <ul>
+            <li><Link to='cast'>Cast</Link></li>
+            {/* <li><Link to='reviews'>Reviews</Link></li> */}
+          </ul>
         </div>
-        </main>)}
+        <Outlet movieId={movieId}/>
+        </div>
+        )}
+        </main>
       </>
     )
   }

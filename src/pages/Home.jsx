@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
-// import { makeTrendingMoviesApiRequest } from "../services/api"
+// import axios from "axios"
+import { makeTrendingMoviesApiRequest } from "../services/api"
 import { TrendingMovies} from '../components/TrendingMovies/TrendingMovies'
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/'
+// axios.defaults.baseURL = 'https://api.themoviedb.org/'
 
 export const Home = () => {
 const [movies, setMovies] = useState([])
@@ -12,8 +12,7 @@ useEffect(() => {
   // let config = { cancelToken: source.token }
   const onRequestHandler = async () => {
     try {
-      const dataMovies = await axios.get(`3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
-      .then(res => res.data.results)
+      const dataMovies = await makeTrendingMoviesApiRequest()
       const moviesInfo = await dataMovies.map(({title, name, id}) => {return {title, name, id}})
       setMovies(moviesInfo)
     } catch (error) {
@@ -24,6 +23,10 @@ useEffect(() => {
   
   // return source.cancel()
   }, []) 
+
+  if(movies.length === 0) {
+    return
+  }
   
      return (
         <main>

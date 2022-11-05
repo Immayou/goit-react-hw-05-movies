@@ -21,6 +21,7 @@ align-items: center;
 justify-content: center;
 min-width: 110px;
 font-size: 23px;
+border-radius: 5px;
 color: blueviolet;
 &:not(:last-child) {
     margin-right: 45px;
