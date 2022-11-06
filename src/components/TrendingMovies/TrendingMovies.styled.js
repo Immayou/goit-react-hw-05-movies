@@ -6,6 +6,7 @@ export const MovieListLink = styled(Link)`
 text-decoration: none;
 font-size: 20px;
 font-style: italic;
+color: #000;
 `
 
 export const MdDoneAllIcon = styled(MdDoneAll)`
