@@ -30,13 +30,17 @@ color: #000;
 `
 
 export const WrapperBox = styled.div`
+padding: 0;
+`
+
+export const Container = styled.div`
 display: grid;
-grid-template-columns: 500px 2fr;
+grid-template-columns: 350px 1fr; 
+grid-column-gap: 40px;
 `
 
 export const PosterImage = styled.img`
-width: 450px;
-min-height: 400px;
+height: 400px;
 border-radius: 5px;
 border: 1px solid gray;
 `

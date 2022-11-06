@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, Outlet } from "react-router-dom"
 import { HiChevronDoubleLeft } from 'react-icons/hi';
 import { makeMovieApiReguest } from "../../services/api"
-import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle, MovieInfo, MainBox, AditionalBox, InfoList, InfoItem, InfoLink } from "./MovieDetails.styled"
+import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle, MovieInfo, Container, MainBox, AditionalBox, InfoList, InfoItem, InfoLink } from "./MovieDetails.styled"
 
 export const MovieDetails = () => {
 const {movieId} = useParams()
@@ -29,16 +29,15 @@ useEffect(() => {
       {movieInfo &&
         (
         <WrapperBox>
-        <PosterImage src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`} alt={`${movieInfo.title ? movieInfo.title : movieInfo.name}`}/>
+        <Container>
+          <PosterImage src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`} alt={`${movieInfo.title ? movieInfo.title : movieInfo.name}`}/>
         <div>
         <MainBox>
-        <MovieTitle>{movieInfo.title ? movieInfo.title : movieInfo.name} <span>({movieInfo.release_date.slice(0, 4)})</span></MovieTitle>
-        <InfoTitle>User score:</InfoTitle>
-        <MovieInfo> {(Number(movieInfo.vote_average)*10).toFixed(1)} %</MovieInfo>
-        <InfoTitle>Overview</InfoTitle>
-        <MovieInfo>{movieInfo.overview}</MovieInfo>
-        <InfoTitle>Genres:</InfoTitle>
-        <MovieInfo>{movieInfo.genres.map(({name}) => name).join(', ')}</MovieInfo>
+          <MovieTitle>{movieInfo.title ? movieInfo.title : movieInfo.name} <span>({movieInfo.release_date.slice(0, 4)})</span></MovieTitle>
+          <InfoTitle>User score:</InfoTitle>
+          <MovieInfo> {(Number(movieInfo.vote_average)*10).toFixed(1)} %</MovieInfo>
+          <InfoTitle>Genres:</InfoTitle>
+          <MovieInfo>{movieInfo.genres.map(({name}) => name).join(', ')}</MovieInfo>
         </MainBox>
         <AditionalBox>
           <InfoTitle>Aditional information</InfoTitle> 
@@ -48,6 +47,7 @@ useEffect(() => {
           </InfoList>
         </AditionalBox>
         </div>
+        </Container>
         <Outlet />
         </WrapperBox>
         )}

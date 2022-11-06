@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { makeCastApiReguest } from "../../services/api"
+import { CastList, CharacterPicture, CharacterName } from "./Cast.styled"
 
 export const Cast = () => {
     const {movieId} = useParams()
@@ -20,13 +21,22 @@ export const Cast = () => {
         }, [movieId])
 
     return (
-        <ul>
+      <>
+      {movieCast &&
+        (<CastList>
         {movieCast.map(({character, id, profile_path, name}) => (
         <li key={id}>
-            <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={`${name}`} />
-            <p>{name}</p>
+            <CharacterPicture src={profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}` : require('../../img/no-img-avaliable.jpg')} alt={`${name}`} />
+            <CharacterName>{name}</CharacterName>
             <p>Character: {character}</p>
             </li>))}
-        </ul>
+        </CastList>)}
+      </>
     )
 }
+
+
+// {profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}
+
+
+// require('../../img/no-img-avaliable.jpg')
