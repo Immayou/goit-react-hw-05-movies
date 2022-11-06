@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { FiLoader } from "react-icons/fi";
 import { makeMovieSearchApiReguest } from "../../services/api"
 import { MoviesList, MovieTitle, PosterPicture, SearchForm, SearchFormButton, SearchFormInput } from "./Movies.styled"
     
@@ -25,7 +26,7 @@ export const Movies = () => {
           <main>
             <section>
             <SearchForm>
-                <SearchFormButton type="submit">
+                <SearchFormButton type="submit"><FiLoader size='20px'/>
                 </SearchFormButton>
             <SearchFormInput
             type="text"
