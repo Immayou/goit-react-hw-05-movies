@@ -30,14 +30,14 @@ useEffect(() => {
         (
         <WrapperBox>
         <Container>
-          <PosterImage src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`} alt={`${movieInfo.title ? movieInfo.title : movieInfo.name}`}/>
+          <PosterImage src={movieInfo.poster_path ? `https://image.tmdb.org/t/p/w500${movieInfo.poster_path}` : require('../../img/no-img-avaliable.jpg')} alt={`${movieInfo.title ? movieInfo.title : movieInfo.name}`}/>
         <div>
         <MainBox>
           <MovieTitle>{movieInfo.title ? movieInfo.title : movieInfo.name} <span>({movieInfo.release_date.slice(0, 4)})</span></MovieTitle>
           <InfoTitle>User score:</InfoTitle>
-          <MovieInfo> {(Number(movieInfo.vote_average)*10).toFixed(0)}%</MovieInfo>
+          <MovieInfo> {Number(movieInfo.vote_average) !== 0 ? (Number(movieInfo.vote_average)*10).toFixed(0) + '%' : 'No information'}</MovieInfo>
           <InfoTitle>Genres:</InfoTitle>
-          <MovieInfo>{movieInfo.genres.map(({name}) => name).join(', ')}</MovieInfo>
+          <MovieInfo>{movieInfo.genres.length !== 0 ? movieInfo.genres.map(({name}) => name).join(', ') : 'No information'}</MovieInfo>
         </MainBox>
         <AditionalBox>
           <InfoTitle>Aditional information</InfoTitle> 

@@ -10,6 +10,9 @@ export const Movies = () => {
     const query = searchParams.get('query') ?? ''
 
     useEffect(() => {
+        if (query === "") {
+            return
+        }
     
         const onRequestHandler = async () => {
             try {
