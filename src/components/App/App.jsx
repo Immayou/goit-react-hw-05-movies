@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Wrapper, AppBar, NavItem, ImHomeIcon, ImVideoCameraIcon } from "./App.styled";
 import { Home } from '../../pages/Home/Home'
-import { Movies } from '../../pages/Movies'
+import { Movies } from '../../pages/Movies/Movies'
 import { MovieDetails } from "../../pages/MovieDetails/MovieDetails";
 import { Cast } from "../Cast/Cast";
 import { Reviews } from "../Reviews/Reviews";

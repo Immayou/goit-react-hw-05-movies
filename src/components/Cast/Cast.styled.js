@@ -8,7 +8,7 @@ grid-column-gap: 10px;
 grid-row-gap: 10px;
 `
 export const CharacterPicture = styled.img`
-height: 200px;
+height: 300px;
 border-radius: 5px;
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 `

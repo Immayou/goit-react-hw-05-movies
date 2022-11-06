@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { makeReviewApiReguest } from "../../services/api"
+import { ItemTitle, NoResultsImage, MovieItem } from "./Reviews.styled"
 
 export const Reviews = () => {
     const {movieId} = useParams()
@@ -21,13 +22,13 @@ export const Reviews = () => {
 
     return (
         <>
-        {movieReviews.length === 0 ? <p>Sorry, no reviews</p> :
+        {movieReviews.length === 0 ? <NoResultsImage src={require('../../img/sorry-no-results.png')} alt="Sorry, no results" /> :
         (<ul>
           {movieReviews.map(({author, content, id}) => (
-          <li key={id}>
-              <h3>Author: {author}</h3> 
+          <MovieItem key={id}>
+              <ItemTitle>Author: {author}</ItemTitle> 
               <p>{content}</p>
-              </li>))}
+              </MovieItem>))}
           </ul>)}
      </>
     )

@@ -15,8 +15,8 @@ useEffect(() => {
   const onRequestHandler = async () => {
     try {
       const dataMovies = await makeTrendingMoviesApiRequest()
-      const moviesInfo = await dataMovies.map(({title, name, id}) => {return {title, name, id}})
-      setMovies(moviesInfo)
+      const getmoviesInfo = await dataMovies.map(({title, name, id}) => {return {title, name, id}})
+      setMovies(getmoviesInfo)
     } catch (error) {
       console.log(error.message)
     }

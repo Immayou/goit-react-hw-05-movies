@@ -35,7 +35,7 @@ useEffect(() => {
         <MainBox>
           <MovieTitle>{movieInfo.title ? movieInfo.title : movieInfo.name} <span>({movieInfo.release_date.slice(0, 4)})</span></MovieTitle>
           <InfoTitle>User score:</InfoTitle>
-          <MovieInfo> {(Number(movieInfo.vote_average)*10).toFixed(1)} %</MovieInfo>
+          <MovieInfo> {(Number(movieInfo.vote_average)*10).toFixed(0)}%</MovieInfo>
           <InfoTitle>Genres:</InfoTitle>
           <MovieInfo>{movieInfo.genres.map(({name}) => name).join(', ')}</MovieInfo>
         </MainBox>
