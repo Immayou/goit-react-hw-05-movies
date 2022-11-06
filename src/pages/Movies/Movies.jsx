@@ -6,12 +6,13 @@ import { MoviesList, MovieTitle, PosterPicture } from "./Movies.styled"
     
 export const Movies = () => {
     const [movieInfo, setMovieInfo] = useState([])
-    
+    const [searchQuery, setSearchQuery] = useState('')
+
     useEffect(() => {
     
         const onRequestHandler = async () => {
             try {
-            const getMovieByQuery = await makeMovieSearchApiReguest('batman').then(res => res)
+            const getMovieByQuery = await makeMovieSearchApiReguest(searchQuery).then(res => res)
             const getMovieInfo = await getMovieByQuery.map(({id, title, vote_average, poster_path}) => {return {title, id, vote_average, poster_path}})
             setMovieInfo(getMovieInfo)
         } catch (error) {
@@ -19,13 +20,17 @@ export const Movies = () => {
             }
         }
             onRequestHandler()
-        }, [])
+        }, [searchQuery])
+
+    const queryHandler = (value) => {
+     setSearchQuery(value)
+    }
 
         return (
           <>
           <main>
             <section>
-            <SearchBox />
+            <SearchBox onSubmit={queryHandler}/>
                {movieInfo &&
             (<MoviesList>
             {movieInfo.map(({id, title, vote_average, poster_path}) => (
