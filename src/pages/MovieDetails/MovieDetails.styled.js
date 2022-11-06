@@ -37,12 +37,14 @@ export const Container = styled.div`
 display: grid;
 grid-template-columns: 350px 1fr; 
 grid-column-gap: 40px;
+margin-bottom: 20px;
 `
 
 export const PosterImage = styled.img`
 height: 400px;
 border-radius: 5px;
 border: 1px solid gray;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 `
 
 export const MovieTitle = styled.h2`

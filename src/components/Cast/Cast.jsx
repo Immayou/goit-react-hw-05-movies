@@ -35,8 +35,3 @@ export const Cast = () => {
     )
 }
 
-
-// {profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}
-
-
-// require('../../img/no-img-avaliable.jpg')

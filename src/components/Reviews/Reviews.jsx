@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { makeCastApiReguest } from "../../services/api"
+import { makeReviewApiReguest } from "../../services/api"
 
 export const Reviews = () => {
     const {movieId} = useParams()
-    const [movieCast, setMovieCast] = useState([])
+    const [movieReviews, setMovieReviews] = useState([])
 
     useEffect(() => {
 
         const onRequestHandler = async () => {
           try {
-            const getMovieCast = await makeCastApiReguest(movieId).then(res => res)
-            setMovieCast(getMovieCast)
+            const getMovieReviews = await makeReviewApiReguest(movieId).then(res => res)
+            setMovieReviews(getMovieReviews)
           } catch (error) {
             console.log(error.message)
           }
@@ -20,13 +20,15 @@ export const Reviews = () => {
         }, [movieId])
 
     return (
-        <ul>
-        {movieCast.map(({character, id, profile_path, name}) => (
-        <li key={id}>
-            <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={`${name}`} />
-            <p>{name}</p>
-            <p>Character: {character}</p>
-            </li>))}
-        </ul>
+        <>
+        {movieReviews.length === 0 ? <p>Sorry, no reviews</p> :
+        (<ul>
+          {movieReviews.map(({author, content, id}) => (
+          <li key={id}>
+              <h3>Author: {author}</h3> 
+              <p>{content}</p>
+              </li>))}
+          </ul>)}
+     </>
     )
 }

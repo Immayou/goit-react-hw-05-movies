@@ -18,6 +18,6 @@ export const makeCastApiReguest = async (id) => {
 }
 
 export const makeReviewApiReguest = async (id) => {
-    const response = await axios.get(`movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-    return await response.data
+    const response = await axios.get(`movie/${id}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)  
+    return response.data.results
 }
