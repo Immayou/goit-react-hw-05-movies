@@ -25,18 +25,18 @@ useEffect(() => {
   
   // return source.cancel()
   }, []) 
-
-  if(movies.length === 0) {
-    return
-  }
   
      return (
-        <main>
+      <>
+      {movies.length !== 0 &&
+      (<main>
           <section>
         <Title>Trending today</Title>
         <TrendingMovies getMovies={movies}/>
           </section>
-        </main>
+        </main>)}
+        </>
+        
     )
 }
 
