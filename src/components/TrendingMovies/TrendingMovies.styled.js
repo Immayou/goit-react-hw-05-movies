@@ -20,9 +20,10 @@ justify-content: center;
 &:not(:last-child) {
     margin-bottom: 8px;
 }
-transition: text-shadow 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+transition: text-shadow 250ms cubic-bezier(0.075, 0.82, 0.165, 1), transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
 &:hover {
 text-shadow: 1px 1px 1px gray;
+transform: scaleY(1.1);
 }
 `
