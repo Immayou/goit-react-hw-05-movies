@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 import { ImHome, ImVideoCamera } from 'react-icons/im';
 import { NavLink } from "react-router-dom";
 
-export const Wrapper = styled.div`
-display: block;
-width: 100%;
-height: 100%;
-margin: 0 auto;
-background-color: #FFC0CB;
-`
+// export const Wrapper = styled.div`
+// display: block;
+// width: 100%;
+// height: 100%;
+// margin: 0 auto;
+// background-color: #FFC0CB;
+// `
 
 export const AppBar = styled.header`
 display: flex;

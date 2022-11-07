@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Wrapper, AppBar, NavItem, ImHomeIcon, ImVideoCameraIcon } from "./App.styled";
+import { AppBar, NavItem, ImHomeIcon, ImVideoCameraIcon } from "./App.styled";
 import { Home } from '../../pages/Home/Home'
 import { Movies } from '../../pages/Movies/Movies'
 import { MovieDetails } from "../../pages/MovieDetails/MovieDetails";
@@ -8,7 +8,7 @@ import { Reviews } from "../Reviews/Reviews";
 
 export const App = () => {
   return (
-    <Wrapper>
+    <>
       <AppBar>
         <nav>
           <NavItem to="/" end='true'><ImHomeIcon />Home</NavItem>
@@ -23,6 +23,6 @@ export const App = () => {
           <Route path="/movies/:movieId/reviews" element={<Reviews />}/> 
           </Route>
       </Routes> 
-    </Wrapper>
+    </>
   );
 };
