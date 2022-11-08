@@ -9,9 +9,8 @@ min-width: 110px;
 min-height: 35px;
 margin-bottom: 20px;
 font-size: 18px;
-border-radius: 5px 20px;
-border: 1px solid gray;
-background-color: #E6E6FA;
+border-radius: 5px;
+background-image: radial-gradient(red 2%, black 95%);
 transition: box-shadow 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
 &:hover {
@@ -87,6 +86,7 @@ min-height: 35px;
 padding: 3px;
 font-size: 23px;
 border-radius: 5px;
+background-image: radial-gradient(red 2%, black 95%);
 color: #000;
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 opacity: 1;

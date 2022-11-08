@@ -6,7 +6,7 @@ justify-content: center;
 align-items: center;
 margin-bottom: 20px;
 max-width: 500px;
-background-color: #ffe6ff;
+background-color: azure;
 border-radius: 5px;
 border: 1px solid gray;
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);

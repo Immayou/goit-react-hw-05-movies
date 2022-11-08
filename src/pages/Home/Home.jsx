@@ -11,6 +11,7 @@ export const Home = () => {
 const [movies, setMovies] = useState([])
 // let source = axios.CancelToken.source()
 useEffect(() => {
+
   // let config = { cancelToken: source.token }
   const onRequestHandler = async () => {
     try {
@@ -22,7 +23,6 @@ useEffect(() => {
     }
   }
   onRequestHandler()
-  
   // return source.cancel()
   }, []) 
   

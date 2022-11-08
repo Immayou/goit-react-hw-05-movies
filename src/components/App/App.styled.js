@@ -16,7 +16,7 @@ align-items: center;
 padding: 0 20px;
 height: 70px;
 border-bottom: 1px solid rgba(0,0,0,0.24);
-background-image: linear-gradient(to right top, #81aae8, #9ea3e3, #b79bd9, #cb94ca, #da8eb8);
+background-image: linear-gradient(to right top, red 10%, black);
 `
 
 export const ImHomeIcon = styled(ImHome)`
@@ -38,6 +38,7 @@ border-radius: 5px;
 text-decoration: none;
 color: #000;
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+background-image: radial-gradient(red 2%, black 95%);
 opacity: 1;
 transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1), opacity 250ms cubic-bezier(0.075, 0.82, 0.165, 1), border 250ms cubic-bezier(0.075, 0.82, 0.165, 1), box-shadow 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 &:not(:last-child) {
