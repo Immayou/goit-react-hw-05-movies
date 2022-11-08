@@ -3,6 +3,7 @@ import axios from "axios"
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
 
 export const makeTrendingMoviesApiRequest = async () => {
+   
     const response = await axios.get(`trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
     return await response.data.results
 }

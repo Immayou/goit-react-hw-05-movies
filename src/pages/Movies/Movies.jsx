@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link, useSearchParams } from "react-router-dom"
+import { Link, useSearchParams, useLocation } from "react-router-dom"
 import { makeMovieSearchApiReguest } from "../../services/api"
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import { MoviesList, MovieTitle, PosterPicture } from "./Movies.styled"
@@ -8,6 +8,7 @@ export const Movies = () => {
     const [movies, setMovies] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const query = searchParams.get('query') ?? ''
+    const location = useLocation()
 
     useEffect(() => {
         if (query === "") {
@@ -39,7 +40,7 @@ export const Movies = () => {
             (<MoviesList>
             {movies.map(({id, title, vote_average, poster_path}) => (
             <li key={id}>
-                <Link to={`${id}`}>
+                <Link to={`${id}`} state={{from: location}}>
                 <PosterPicture src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : require('../../img/no-img-avaliable.jpg')} alt={`${title}`} />
                 </Link>
                 <MovieTitle>{title}</MovieTitle>

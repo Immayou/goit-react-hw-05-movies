@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { ImHome, ImVideoCamera } from 'react-icons/im';
 import { NavLink } from "react-router-dom";
+import Logo from '../../img/logo.png';
 
 // export const Wrapper = styled.div`
 // display: block;
@@ -15,8 +16,11 @@ display: flex;
 align-items: center;
 padding: 0 20px;
 height: 70px;
-border-bottom: 1px solid rgba(0,0,0,0.24);
-background-image: linear-gradient(to right top, red 10%, black);
+border-bottom: 1px solid black;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: right;
+background-image: url(${Logo}), linear-gradient(to right top, red 10%, black);
 `
 
 export const ImHomeIcon = styled(ImHome)`

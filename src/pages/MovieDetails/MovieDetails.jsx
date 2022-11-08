@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Outlet } from "react-router-dom"
+import { useParams, Outlet, useLocation } from "react-router-dom"
 import { HiChevronDoubleLeft } from 'react-icons/hi';
 import { makeMovieApiReguest } from "../../services/api"
 import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle, MovieInfo, Container, MainBox, AditionalBox, InfoList, InfoItem, InfoLink } from "./MovieDetails.styled"
@@ -7,9 +7,9 @@ import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle,
 export const MovieDetails = () => {
 const {movieId} = useParams()
 const [movieInfo, setMovieInfo] = useState(null)
+const location = useLocation()
 
 useEffect(() => {
-
   const onRequestHandler = async () => {
     try {
       const movieDatails = await makeMovieApiReguest(movieId).then(res => res)
@@ -25,7 +25,7 @@ useEffect(() => {
     <>
     <main>
       <section>
-      <BackButton type='button'><LinkButton to='/'><HiChevronDoubleLeft />Go back</LinkButton></BackButton>
+      <BackButton type='button'><LinkButton to={location.state?.from ?? '/'}><HiChevronDoubleLeft />Go back</LinkButton></BackButton>
       {movieInfo &&
         (
         <WrapperBox>
@@ -42,8 +42,8 @@ useEffect(() => {
         <AditionalBox>
           <InfoTitle>Aditional information</InfoTitle> 
           <InfoList>
-            <InfoItem><InfoLink to='cast'>Cast</InfoLink></InfoItem>
-            <InfoItem><InfoLink to='reviews'>Reviews</InfoLink></InfoItem>
+            <InfoItem><InfoLink to='cast' state={{from: location.state.from}}>Cast</InfoLink></InfoItem>
+            <InfoItem><InfoLink to='reviews' state={{from: location.state.from}}>Reviews</InfoLink></InfoItem>
           </InfoList>
         </AditionalBox>
         </div>
