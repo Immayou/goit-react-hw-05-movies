@@ -3,24 +3,16 @@ import { ImHome, ImVideoCamera } from 'react-icons/im';
 import { NavLink } from "react-router-dom";
 import Logo from '../../img/logo.png';
 
-// export const Wrapper = styled.div`
-// display: block;
-// width: 100%;
-// height: 100%;
-// margin: 0 auto;
-// background-color: #FFC0CB;
-// `
-
 export const AppBar = styled.header`
 display: flex;
 align-items: center;
-padding: 0 20px;
+padding: 0 10px;
 height: 70px;
-border-bottom: 1px solid black;
+border-bottom: 1mm ridge rgba(143, 7, 7, 0.9);
 background-size: contain;
 background-repeat: no-repeat;
 background-position: right;
-background-image: url(${Logo}), linear-gradient(to right top, red 10%, black);
+background-image: url(${Logo}), linear-gradient(to right bottom, red 10%, black);
 `
 
 export const ImHomeIcon = styled(ImHome)`
@@ -60,5 +52,4 @@ background-color: rgba(19,10,136,0.30);
 opacity: 1;
 border: 1px solid rgba(0,0,0,0.24);
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-`
+}`

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useParams, Outlet, useLocation } from "react-router-dom"
 import { HiChevronDoubleLeft } from 'react-icons/hi';
 import { makeMovieApiReguest } from "../../services/api"
 import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle, MovieInfo, Container, MainBox, AditionalBox, InfoList, InfoItem, InfoLink } from "./MovieDetails.styled"
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
 const {movieId} = useParams()
 const [movieInfo, setMovieInfo] = useState(null)
 const location = useLocation()
@@ -42,13 +42,15 @@ useEffect(() => {
         <AditionalBox>
           <InfoTitle>Aditional information</InfoTitle> 
           <InfoList>
-            <InfoItem><InfoLink to='cast' state={{from: location.state.from}}>Cast</InfoLink></InfoItem>
-            <InfoItem><InfoLink to='reviews' state={{from: location.state.from}}>Reviews</InfoLink></InfoItem>
+            <InfoItem><InfoLink to='cast' state={{from: location.state?.from ?? '/'}}>Cast</InfoLink></InfoItem>
+            <InfoItem><InfoLink to='reviews' state={{from: location.state?.from ?? '/'}}>Reviews</InfoLink></InfoItem>
           </InfoList>
         </AditionalBox>
         </div>
         </Container>
+        <Suspense fallback={null}>
         <Outlet />
+        </Suspense>
         </WrapperBox>
         )}
         </section>
@@ -57,3 +59,4 @@ useEffect(() => {
     )
   }
 
+export default MovieDetails;

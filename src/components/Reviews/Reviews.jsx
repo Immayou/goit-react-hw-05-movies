@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { makeReviewApiReguest } from "../../services/api"
 import { ItemTitle, NoResultsImage, MovieItem } from "./Reviews.styled"
 
-export const Reviews = () => {
+const Reviews = () => {
     const {movieId} = useParams()
     const [movieReviews, setMovieReviews] = useState([])
 
@@ -33,3 +33,5 @@ export const Reviews = () => {
      </>
     )
 }
+
+export default Reviews

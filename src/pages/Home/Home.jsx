@@ -3,7 +3,7 @@ import { makeTrendingMoviesApiRequest } from "../../services/api"
 import { TrendingMovies} from '../../components/TrendingMovies/TrendingMovies'
 import { Title } from "./Home.styled"
 
-export const Home = () => {
+const Home = () => {
 const [movies, setMovies] = useState([])
 
 useEffect(() => {
@@ -33,4 +33,6 @@ useEffect(() => {
         
     )
 }
+
+export default Home
 

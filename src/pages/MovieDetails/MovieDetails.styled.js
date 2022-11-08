@@ -19,7 +19,6 @@ border: 1px solid rgba(0,0,0,0.24);
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 `
-
 export const LinkButton = styled(Link)`
 display: inline-flex;
 align-items: center;
@@ -34,16 +33,30 @@ padding: 0;
 
 export const Container = styled.div`
 display: grid;
-grid-template-columns: 350px 1fr; 
+grid-template-columns: (1, 1fr); 
+grid-column-gap: 10px;
+grid-row-gap: 10px;
+margin-bottom: 10px;
+
+@media screen and (min-width: 768px) {
+grid-template-columns: 410px 1fr; 
 grid-column-gap: 40px;
 margin-bottom: 20px;
+}
+@media screen and (min-width: 1200px) {
+grid-template-columns: 500px 1fr; 
+}
 `
 
 export const PosterImage = styled.img`
+margin: 0 auto;
 height: 400px;
 border-radius: 5px;
 border: 1px solid gray;
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+@media screen and (min-width: 450px) {
+width: 410px;
+}
 `
 
 export const MovieTitle = styled.h2`

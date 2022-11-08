@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { makeCastApiReguest } from "../../services/api"
-import { CastList, CharacterPicture, CharacterName } from "./Cast.styled"
+import { CastList, CharacterPicture, CharacterName, Character } from "./Cast.styled"
 
-export const Cast = () => {
+const Cast = () => {
     const {movieId} = useParams()
     const [movieCast, setMovieCast] = useState([])
 
@@ -28,10 +28,11 @@ export const Cast = () => {
         <li key={id}>
             <CharacterPicture src={profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}` : require('../../img/no-img-avaliable.jpg')} alt={`${name}`} />
             <CharacterName>{name}</CharacterName>
-            <p>Character: {character}</p>
+            <Character>Character: {character}</Character>
             </li>))}
         </CastList>)}
       </>
     )
 }
 
+export default Cast

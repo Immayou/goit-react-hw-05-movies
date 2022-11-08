@@ -17,15 +17,15 @@ onChange(inputQuery)}
 
 return (
     <SearchForm onSubmit={formSubmitHandler}>
-        <SearchFormButton type="submit"><FiLoader size='20px'/>
-        </SearchFormButton>
-        <SearchFormInput
+      <SearchFormInput
     type="text"
     autoComplete="off"
     autoFocus
     placeholder="Search images and photos"
     onChange={inputHandler}
     />
+      <SearchFormButton type="submit"><FiLoader size='20px'/>
+      </SearchFormButton>
 </SearchForm>
     )
 }

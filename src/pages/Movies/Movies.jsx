@@ -4,7 +4,7 @@ import { makeMovieSearchApiReguest } from "../../services/api"
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import { MoviesList, MovieTitle, PosterPicture } from "./Movies.styled"
     
-export const Movies = () => {
+const Movies = () => {
     const [movies, setMovies] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const query = searchParams.get('query') ?? ''
@@ -53,3 +53,5 @@ export const Movies = () => {
           </>
         )
     }
+
+export default Movies;
