@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react"
-import { Link, useSearchParams, useLocation } from "react-router-dom"
+import { useSearchParams, useLocation } from "react-router-dom"
 import { makeMovieSearchApiReguest } from "../../services/api"
+import { ListOfMovies } from "./ListOfMovies";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
-import { MoviesList, MovieTitle, PosterPicture } from "./Movies.styled"
+import { Spinner } from "../../components/Spiner/Spiner"
     
 const Movies = () => {
     const [movies, setMovies] = useState([])
+    const [isSubmit, setIsSubmit] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const query = searchParams.get('query') ?? ''
     const location = useLocation()
@@ -17,9 +20,11 @@ const Movies = () => {
     
         const onRequestHandler = async () => {
             try {
+            setIsLoading(true)
             const getMoviesByQuery = await makeMovieSearchApiReguest(query).then(res => res)
             const getMoviesInfo = await getMoviesByQuery.map(({id, title, vote_average, poster_path}) => {return {title, id, vote_average, poster_path}})
             setMovies(getMoviesInfo)
+            setIsLoading(false)
         } catch (error) {
             console.log(error.message)
             }
@@ -28,26 +33,16 @@ const Movies = () => {
         }, [query])
 
     const queryHandler = (value) => {
-     setSearchParams(value !== '' ? {query: value} : {})
+     setIsSubmit(true)
+     setSearchParams(value.trim() !== '' ? {query: value} : {})
     }
 
         return (
           <>
           <main>
-            <section>
+             <section>
             <SearchBox onChange={queryHandler}/>
-               {movies.length > 0 &&
-            (<MoviesList>
-            {movies.map(({id, title, vote_average, poster_path}) => (
-            <li key={id}>
-                <Link to={`${id}`} state={{from: location}}>
-                <PosterPicture src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : require('../../img/no-img-avaliable.jpg')} alt={`${title}`} />
-                </Link>
-                <MovieTitle>{title}</MovieTitle>
-                <p>User score: {(Number(vote_average)*10).toFixed(0)}%</p>
-            </li>))}
-            </MoviesList>)
-            }   
+         {isLoading ? <Spinner /> : <ListOfMovies allMovies={movies} location={location} submit={isSubmit}/>}
             </section>
           </main>
           </>
@@ -55,3 +50,4 @@ const Movies = () => {
     }
 
 export default Movies;
+

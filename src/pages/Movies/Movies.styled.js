@@ -25,3 +25,8 @@ export const MovieTitle = styled.h2`
 font-size: 17px;
 font-style: oblique;
 `
+export const EmptySubmitAlarmMessage = styled.p`
+font-size: 20px;
+font-style: italic;
+opacity: 0.6;
+`

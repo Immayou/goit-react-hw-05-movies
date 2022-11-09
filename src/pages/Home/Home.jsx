@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react"
 import { makeTrendingMoviesApiRequest } from "../../services/api"
 import { TrendingMovies} from '../../components/TrendingMovies/TrendingMovies'
+import { Spinner } from "../../components/Spiner/Spiner"
 import { Title } from "./Home.styled"
 
 const Home = () => {
 const [movies, setMovies] = useState([])
+const [isLoading, setIsLoading] = useState(false)
 
 useEffect(() => {
   const onRequestHandler = async () => {
     try {
+      setIsLoading(true)
       const dataMovies = await makeTrendingMoviesApiRequest()
       const getmoviesInfo = await dataMovies.map(({title, name, id}) => {return {title, name, id}})
       setMovies(getmoviesInfo)
+      setIsLoading(false)
     } catch (error) {
       console.log(error.message)
     }
@@ -22,13 +26,15 @@ useEffect(() => {
   
      return (
       <>
+      <main>
+      {isLoading && <Spinner />}
       {movies.length !== 0 &&
-      (<main>
-          <section>
+      ( <section>
         <Title>Trending today</Title>
         <TrendingMovies getMovies={movies}/>
           </section>
-        </main>)}
+        )}
+        </main>
         </>
         
     )

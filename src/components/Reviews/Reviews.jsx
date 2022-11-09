@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { makeReviewApiReguest } from "../../services/api"
-import { ItemTitle, NoResultsImage, MovieItem } from "./Reviews.styled"
+import { ReviewsList } from "./ReviewsList"
+import { Spinner } from "../../components/Spiner/Spiner"
 
 const Reviews = () => {
     const {movieId} = useParams()
     const [movieReviews, setMovieReviews] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
 
         const onRequestHandler = async () => {
           try {
+            setIsLoading(true)
             const getMovieReviews = await makeReviewApiReguest(movieId).then(res => res)
             setMovieReviews(getMovieReviews)
+            setIsLoading(false)
           } catch (error) {
             console.log(error.message)
           }
@@ -21,15 +25,8 @@ const Reviews = () => {
         }, [movieId])
 
     return (
-        <>
-        {movieReviews.length === 0 ? <NoResultsImage src={require('../../img/sorry-no-results.png')} alt="Sorry, no results" /> :
-        (<ul>
-          {movieReviews.map(({author, content, id}) => (
-          <MovieItem key={id}>
-              <ItemTitle>Author: {author}</ItemTitle> 
-              <p>{content}</p>
-              </MovieItem>))}
-          </ul>)}
+        <> 
+        {isLoading ? <Spinner /> : <ReviewsList reviews={movieReviews}/>} 
      </>
     )
 }

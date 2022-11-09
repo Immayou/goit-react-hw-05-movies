@@ -13,6 +13,9 @@ background-size: contain;
 background-repeat: no-repeat;
 background-position: right;
 background-image: url(${Logo}), linear-gradient(to right bottom, red 10%, black);
+@media screen and (min-width: 450px) {
+padding: 0 20px;
+}
 `
 
 export const ImHomeIcon = styled(ImHome)`

@@ -39,4 +39,10 @@ padding: 0 4px;
 font: inherit;
 font-size: 18px;
 }
-  `
+`
+
+export const EmptySubmitAlarmMessage = styled.p`
+font-size: 20px;
+font-style: italic;
+opacity: 0.6;
+`

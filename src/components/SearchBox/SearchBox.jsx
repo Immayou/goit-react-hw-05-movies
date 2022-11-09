@@ -11,8 +11,7 @@ setInputQuery (e.currentTarget.value.toLowerCase())
     
 const formSubmitHandler = e => {
 e.preventDefault();
-if (inputQuery.trim() !== '') {
-onChange(inputQuery)}
+onChange(inputQuery);
 }
 
 return (
@@ -21,7 +20,7 @@ return (
     type="text"
     autoComplete="off"
     autoFocus
-    placeholder="Search images and photos"
+    placeholder="Search movies by title"
     onChange={inputHandler}
     />
       <SearchFormButton type="submit"><FiLoader size='20px'/>
