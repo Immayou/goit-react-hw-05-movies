@@ -8,6 +8,7 @@ justify-content: center;
 min-width: 110px;
 min-height: 35px;
 margin-bottom: 20px;
+padding: 3px;
 font-size: 18px;
 border-radius: 5px;
 background-image: radial-gradient(red 2%, black 95%);

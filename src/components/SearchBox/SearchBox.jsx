@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import { FiLoader } from "react-icons/fi";
 import { SearchForm, SearchFormButton, SearchFormInput } from "./SearchBox.styled"
 
@@ -27,4 +28,8 @@ return (
       </SearchFormButton>
 </SearchForm>
     )
+}
+
+SearchBox.propTypes = {
+  onChange: PropTypes.func.isRequired
 }

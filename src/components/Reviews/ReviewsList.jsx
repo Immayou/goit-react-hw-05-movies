@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { ItemTitle, NoResultsImage, MovieItem } from "./ReviewsList.styled"
 
 export const ReviewsList = ({reviews}) => {
@@ -15,3 +16,12 @@ return (
 )
 }
 
+ReviewsList.propTypes = {
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            author: PropTypes.string,
+            content: PropTypes.string,
+          }).isRequired,
+    ).isRequired,
+    }

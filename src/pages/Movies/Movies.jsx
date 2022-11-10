@@ -7,7 +7,7 @@ import { Spinner } from "../../components/Spiner/Spiner"
     
 const Movies = () => {
     const [movies, setMovies] = useState([])
-    const [isSubmit, setIsSubmit] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const query = searchParams.get('query') ?? ''
@@ -15,6 +15,7 @@ const Movies = () => {
 
     useEffect(() => {
         if (query === "") {
+            setMovies([])
             return
         }
     
@@ -33,7 +34,7 @@ const Movies = () => {
         }, [query])
 
     const queryHandler = (value) => {
-     setIsSubmit(true)
+     setIsSubmitting(true)
      setSearchParams(value.trim() !== '' ? {query: value} : {})
     }
 
@@ -41,8 +42,8 @@ const Movies = () => {
           <>
           <main>
              <section>
-            <SearchBox onChange={queryHandler}/>
-         {isLoading ? <Spinner /> : <ListOfMovies allMovies={movies} location={location} submit={isSubmit}/>}
+            <SearchBox onChange={queryHandler} disabled={isLoading}/>
+         {isLoading ? <Spinner /> : <ListOfMovies allMovies={movies} location={location} isSubmitting={isSubmitting} searchQuery={query}/>}
             </section>
           </main>
           </>

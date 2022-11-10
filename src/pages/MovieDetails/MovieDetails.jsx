@@ -2,11 +2,12 @@ import { useState, useEffect, Suspense } from "react"
 import { useParams, Outlet, useLocation } from "react-router-dom"
 import { HiChevronDoubleLeft } from 'react-icons/hi';
 import { makeMovieApiReguest } from "../../services/api"
-import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle, MovieInfo, Container, MainBox, AditionalBox, InfoList, InfoItem, InfoLink } from "./MovieDetails.styled"
+import { WrapperBox, PosterImage, BackButton, LinkButton, MovieTitle, InfoTitle, MovieInfo, Container, MainBox, AditionalBox, InfoList, InfoItem, InfoLink} from "./MovieDetails.styled"
 
 const MovieDetails = () => {
 const {movieId} = useParams()
 const [movieInfo, setMovieInfo] = useState(null)
+const [error, setError] = useState(null)
 const location = useLocation()
 
 useEffect(() => {
@@ -16,6 +17,7 @@ useEffect(() => {
       setMovieInfo(movieDatails)
     } catch (error) {
       console.log(error.message)
+      setError(error)
     }
   }
   onRequestHandler()
@@ -52,6 +54,13 @@ useEffect(() => {
         <Outlet />
         </Suspense>
         </WrapperBox>
+        )}
+        
+        {error && (
+          <div>
+            <h1>Sorry, the resource you requested could not be found.</h1>
+            <img src={require('../../img/404.png')} alt="Bad Request" height={60}/>
+          </div>
         )}
         </section>
         </main>
