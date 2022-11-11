@@ -13,7 +13,7 @@ useEffect(() => {
     try {
       setIsLoading(true)
       const dataMovies = await makeTrendingMoviesApiRequest()
-      const getmoviesInfo = await dataMovies.map(({title, name, id}) => {return {title, name, id}})
+      const getmoviesInfo = await dataMovies.map(({title, name, id, poster_path, vote_average}) => {return {title, name, id, poster_path, vote_average}})
       setMovies(getmoviesInfo)
       setIsLoading(false)
     } catch (error) {
@@ -23,7 +23,6 @@ useEffect(() => {
   onRequestHandler()
 
   }, []) 
-  
      return (
       <>
       <main>
@@ -36,7 +35,6 @@ useEffect(() => {
         )}
         </main>
         </>
-        
     )
 }
 
