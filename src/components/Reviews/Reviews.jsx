@@ -1,34 +1,33 @@
-import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { makeReviewApiReguest } from "../../services/api"
-import { ReviewsList } from "../ReviewsList/ReviewsList"
-import { Spinner } from "../../components/Spiner/Spiner"
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { makeReviewApiReguest } from '../../services/api';
+import { ReviewsList } from '../ReviewsList/ReviewsList';
+import { Spinner } from '../../components/Spiner/Spiner';
 
 const Reviews = () => {
-    const {movieId} = useParams()
-    const [movieReviews, setMovieReviews] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+  const { movieId } = useParams();
+  const [movieReviews, setMovieReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
+    const onRequestHandler = async () => {
+      try {
+        setIsLoading(true);
+        const getMovieReviews = await makeReviewApiReguest(movieId).then(
+          res => res
+        );
+        setMovieReviews(getMovieReviews);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    onRequestHandler();
+  }, [movieId]);
 
-        const onRequestHandler = async () => {
-          try {
-            setIsLoading(true)
-            const getMovieReviews = await makeReviewApiReguest(movieId).then(res => res)
-            setMovieReviews(getMovieReviews)
-            setIsLoading(false)
-          } catch (error) {
-            console.log(error.message)
-          }
-        }
-        onRequestHandler()
-        }, [movieId])
+  return (
+    <>{isLoading ? <Spinner /> : <ReviewsList reviews={movieReviews} />}</>
+  );
+};
 
-    return (
-        <> 
-        {isLoading ? <Spinner /> : <ReviewsList reviews={movieReviews}/>} 
-     </>
-    )
-}
-
-export default Reviews
+export default Reviews;
