@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import PropTypes from 'prop-types'
 import { MoviesList, MovieTitle, PosterPicture, EmptySubmitAlarmMessage } from "./Movies.styled"
 
-export const ListOfMovies = ({allMovies, location, isSubmitting, searchQuery}) => {
+export const ListOfMovies = ({allMovies, location, isSubmited, searchQuery}) => {
     return (
         <>
     {allMovies.length > 0 &&
@@ -16,8 +16,8 @@ export const ListOfMovies = ({allMovies, location, isSubmitting, searchQuery}) =
         <p>User score: {Number(vote_average) !== 0 ? (Number(vote_average)*10).toFixed(0) + '%' : 'No information'}</p>
     </li>))}
     </MoviesList>)}
-    {allMovies.length === 0 && isSubmitting && searchQuery !== '' && (<EmptySubmitAlarmMessage>The query you requested could not be found!</EmptySubmitAlarmMessage>)}
-    {isSubmitting && searchQuery === '' && (<EmptySubmitAlarmMessage>Enter your query, please!</EmptySubmitAlarmMessage>)}
+    {isSubmited && searchQuery !== '' && (<EmptySubmitAlarmMessage>The query you requested could not be found!</EmptySubmitAlarmMessage>)}
+    {isSubmited && searchQuery === '' && (<EmptySubmitAlarmMessage>Enter your query, please!</EmptySubmitAlarmMessage>)}
     </>
     )
 }

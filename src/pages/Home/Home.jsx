@@ -1,9 +1,9 @@
+import axios from "axios"
 import { useState, useEffect } from "react"
-// import { makeTrendingMoviesApiRequest } from "../../services/api"
 import { TrendingMovies} from '../../components/TrendingMovies/TrendingMovies'
 import { Spinner } from "../../components/Spiner/Spiner"
-import { Title } from "./Home.styled"
-import axios from "axios"
+import { ImPower } from "react-icons/im";
+import { Title, TopBox } from "./Home.styled"
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
 
@@ -22,13 +22,13 @@ const Home = () => {
       }
 
       try {
-        setIsLoading(true)
-        const dataMovies = await makeTrendingMoviesApiRequest()
-        const getmoviesInfo = await dataMovies.map(({title, name, id, poster_path, vote_average}) => {return {title, name, id, poster_path, vote_average}})
-        setMovies(getmoviesInfo)
-        setIsLoading(false)
+      setIsLoading(true)
+      const dataMovies = await makeTrendingMoviesApiRequest()
+      const getmoviesInfo = await dataMovies.map(({title, name, id, poster_path, vote_average}) => {return {title, name, id, poster_path, vote_average}})
+      setMovies(getmoviesInfo)
+      setIsLoading(false)
       } catch (error) {
-        console.log(error.message)
+      console.log(error.message)
       }
     }
     onRequestHandler()
@@ -45,7 +45,10 @@ const Home = () => {
         {isLoading && <Spinner />}
         {movies.length !== 0 &&
         ( <section>
+          <TopBox>
+          <ImPower size='25px'/>
           <Title>Trending today</Title>
+          </TopBox>
           <TrendingMovies getMovies={movies}/>
             </section>
           )}
