@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useSearchParams, useLocation } from "react-router-dom"
 import { makeMovieSearchApiReguest } from "../../services/api"
-import { ListOfMovies } from "./ListOfMovies";
+import { ListOfMovies } from "../../components/ListOfMovies/ListOfMovies";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import { Spinner } from "../../components/Spiner/Spiner"
     

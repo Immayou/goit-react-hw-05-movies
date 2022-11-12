@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { makeReviewApiReguest } from "../../services/api"
-import { ReviewsList } from "./ReviewsList"
+import { ReviewsList } from "../ReviewsList/ReviewsList"
 import { Spinner } from "../../components/Spiner/Spiner"
 
 const Reviews = () => {

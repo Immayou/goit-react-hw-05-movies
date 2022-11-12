@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const CastList = styled.ul`
+export const CastMovieList = styled.ul`
 display:grid;
 grid-column-gap: 10px;
 grid-row-gap: 10px;
@@ -40,4 +40,10 @@ font-style: oblique;
 `
 export const Character = styled.p`
 text-align: center;
+`
+
+export const NoResultsImage = styled.img`
+margin: 0 auto;
+width: 35%;
+height: 300px;
 `

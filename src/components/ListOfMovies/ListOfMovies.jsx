@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import PropTypes from 'prop-types'
-import { MoviesList, MovieTitle, PosterPicture, EmptySubmitAlarmMessage } from "./Movies.styled"
+import { MoviesList, MovieTitle, PosterPicture, EmptySubmitAlarmMessage } from "./ListOfMovies.styled"
 
 export const ListOfMovies = ({allMovies, location, isSubmited, searchQuery}) => {
     return (
@@ -32,6 +32,6 @@ ListOfMovies.propTypes = {
           }).isRequired,
     ).isRequired,
     location: PropTypes.object.isRequired,
-    isSubmitting: PropTypes.bool.isRequired,
+    isSubmited: PropTypes.bool.isRequired,
     searchQuery: PropTypes.string.isRequired,
     }
